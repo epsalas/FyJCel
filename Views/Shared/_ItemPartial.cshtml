@@ -1,0 +1,18 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+  
+    <li class="nav-item">
+        <a class="nav-link text-dark " asp-area="" asp-controller="Producto" asp-action="RegProducto">Registro Producto</a>
+    </li> 
+    <li class="nav-item">
+        <a class="nav-link text-dark " asp-area="" asp-controller="Producto" asp-action="MantProducto">Mantenimiento Producto</a>
+    </li>  
+        <li class="nav-item">
+        <a class="nav-link text-dark " asp-area="" asp-controller="Producto" asp-action="Index">Delivery</a>
+    </li>    
+
+}

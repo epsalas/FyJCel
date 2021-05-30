@@ -1,0 +1,100 @@
+@model IEnumerable<FyJCel.Models.Producto>
+
+<!-- bootstrap Navbar  !-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!--
+<h2>Lista Productos</h2>
+-->
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.zoom {
+  padding: 50px;
+  background-color: white;
+  transition: transform .2s;
+  width: 200px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+}
+</style>
+
+
+<form asp-action="ProductosGrabar">
+  
+<table border="1" width="1100">
+    <tr>
+        <!-- <td width="200">Logo EASYMAR</td> -->
+        <td wisth="900">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <form class="form-inline" action="/action_page.php">
+                    <input width="700" class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-success" type="submit">Search</button>&nbsp
+                    <button type="submit" class="btn btn-primary">Grabar</button>
+                </form>
+            </nav>
+        </td>
+    </tr>
+</table>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+                <!-- <th scope="col">
+                    #
+                </th> -->
+                <th scope="col">
+                    Nombre del Producto<!--@Html.DisplayNameFor(model => model.prod_nombre)-->
+                </th>
+                <th scope="col">
+                    Detalles <!--@Html.DisplayNameFor(model => model.prod_detalle)-->
+                </th>
+                <th scope="col">
+                    Imagen del Producto <!--@Html.DisplayNameFor(model => model.prod_imagen)-->
+                </th>
+                <th scope="col">
+                    Precio <!--@Html.DisplayNameFor(model => model.prod_precio)-->
+                </th>
+                <th scope="col">
+                    Cantidad
+                </th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model)
+{
+        <tr>
+            <td><strong>
+                @Html.DisplayFor(modelItem => item.prod_nombre)</strong>
+            </td>
+            <td>
+                <textarea disabled cols="75" rows="6" style="resize: none; border-style: none;">@Html.DisplayFor(modelItem => item.prod_detalle)</textarea>
+            </td>
+            <td class="zoom">
+                <img src="@Html.DisplayFor(modelItem => item.prod_imagen)"  width="350" height="200">
+            </td>  
+            <td>
+                @Html.DisplayFor(modelItem => item.prod_precio)
+            </td>
+            <td width="4ss0">
+                <input type="text" name="cantidades" value="">
+            </td>
+                                 
+        </tr>
+}        
+    </tbody>
+
+</table>
+
+</form>
